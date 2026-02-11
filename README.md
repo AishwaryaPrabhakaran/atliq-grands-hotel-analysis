@@ -1,170 +1,159 @@
-# 🏨 Atliq Grands Hotel Performance Analysis
+# Atliq Grands – Hotel Performance & Revenue Optimization Analysis
 
-##  Business Problem
+## Executive Summary
 
-Atliq Grands is a multi-city hotel chain operating across different property types and locations.  
-The management team has observed uneven occupancy levels across cities and a noticeable revenue concentration in specific markets. Additionally, weekday performance appears weaker compared to weekends.
+Atliq Grands operates multiple luxury and business hotels across major Indian cities.  
+Management observed uneven occupancy levels, revenue concentration in select markets, and a consistent weekday performance gap.
 
-The business seeks to understand:
+This analysis evaluates hotel performance across cities, room categories, and time periods to determine:
 
-- Why revenue varies across cities  
-- Whether performance gaps are demand-driven or pricing-driven  
-- Which properties are underutilized  
-- Where strategic intervention is required  
-
-This project analyzes historical booking data to derive actionable insights that improve occupancy, pricing strategy, and asset utilization.
+- Whether revenue differences are driven by pricing (ADR) or demand (occupancy)
+- Where asset utilization gaps exist
+- Which cities require demand stimulation vs pricing optimization
+- How service quality influences occupancy performance
 
 ---
 
-## Objectives & Hypothesis
+## Business Objectives
 
-### Primary Objective
-To diagnose revenue performance across cities by decomposing it into:
-- Pricing Driver → Average Daily Rate (ADR)
-- Demand Driver → Occupancy Percentage
-
-### Hypothesis
-Revenue differences across cities are more influenced by pricing strategy (ADR) than occupancy variations.
-
-### Supporting Analytical Goals
-- Evaluate weekday vs weekend occupancy patterns
-- Identify high-capacity underutilized properties
-- Analyze revenue contribution by hotel category
-- Assess relationship between customer ratings and occupancy
+- Diagnose city-level revenue performance
+- Decompose revenue into ADR (pricing power) and Occupancy (demand strength)
+- Identify underutilized high-capacity properties
+- Evaluate weekday vs weekend demand variation
+- Assess revenue contribution by hotel category and booking platform
+- Provide actionable, data-driven strategic recommendations
 
 ---
 
-## Data Collection
+## 📂 Data Overview
 
-The dataset consists of structured CSV files assumed to be extracted by a Data Engineer from the operational business database.
+The dataset consists of structured CSV files extracted from the operational hotel database:
 
-### Data Sources:
+- **fact_bookings.csv** – Transaction-level booking and revenue data  
+- **fact_aggregated_bookings.csv** – Property-level booking summary and capacity data  
+- **dim_hotels.csv** – Property metadata (city, category)
 
-- `fact_bookings.csv`  
-  Transaction-level booking data including revenue, guests, and ratings.
-
-- `fact_aggregated_bookings.csv`  
-  Property-level aggregated booking data including capacity and successful bookings.
-
-- `dim_hotels.csv`  
-  Property metadata including city, hotel name, and category.
-
-The analysis integrates multiple fact tables using `property_id` as the primary key.
+Data was merged using `property_id` as the primary key.
 
 ---
 
-## Data Exploration
-
-Exploratory analysis focused on understanding:
-
-- Distribution of occupancy across cities
-- Room-category performance
-- Revenue contribution by property type
-- Weekday vs weekend trends
-- Property-level capacity utilization
-- Customer rating patterns
-
-Preliminary findings revealed:
-- Consistent weekend outperformance across cities
-- Significant revenue concentration in specific markets
-- Variation in performance across hotel categories
-
----
-
-## Data Cleaning
-
-The following steps were performed to ensure data reliability:
-
-- Removed records where successful bookings exceeded capacity
-- Filtered invalid occupancy values
-- Ensured no division-by-zero errors during metric computation
-- Verified merge integrity between fact tables
-- Avoided accidental aggregation of unrelated numeric columns
-
-All aggregations were explicitly controlled using `.agg()` to prevent unintended summations.
-
----
-
-## 🔄 Data Transformation & Feature Engineering
-
-Several business-relevant metrics were derived:
-
-### 1️⃣ Occupancy Percentage
-Occupancy (%) = (Successful Bookings / Capacity) × 100
-
-### 2️⃣ Average Daily Rate (ADR)
-ADR = Total Revenue Realized / Total Successful Bookings
-ADR was computed using aggregated totals to ensure correct weighted calculation.
-
-### 3️⃣ Revenue Decomposition
-City-level revenue was decomposed into:
-- ADR (Pricing component)
-- Occupancy (Demand component)
-
-This enabled identification of the primary revenue driver.
-
----
-
-## 📊 Key Insights
+## 🔍 Key Analytical Insights
 
 ### 1️⃣ Revenue is Primarily Pricing-Driven (ADR-Led)
 
-City-level decomposition shows that revenue differences align more closely with ADR than occupancy levels.
+City-level decomposition shows that revenue variation aligns more closely with ADR than occupancy:
 
-- Mumbai generates the highest revenue due to strong pricing power.
-- Delhi exhibits the highest occupancy but comparatively lower revenue, indicating pricing optimization opportunity.
+- **Mumbai** generates the highest revenue due to the strongest ADR, not highest occupancy.
+- **Delhi** records the highest occupancy but comparatively lower revenue, indicating pricing optimization opportunity.
 
----
-
-### 2️⃣ Weekday Underperformance is Structural
-
-Weekend occupancy consistently exceeds weekday occupancy across all cities, indicating a portfolio-wide weekday demand gap.
+ **Conclusion:** Pricing strategy plays a stronger role in revenue performance than demand variation.
 
 ---
 
-### 3️⃣ Bangalore Requires Demand Stimulation
+### 2️⃣ Weekday Demand Gap is Structural
 
-Bangalore demonstrates relatively high ADR but the lowest occupancy among major cities, suggesting demand-side intervention is required.
+Across all cities, weekend occupancy consistently exceeds weekday occupancy.
 
----
-
-### 4️⃣ High-Capacity Properties Are Underutilized
-
-Certain large-capacity properties operate below optimal occupancy levels, representing asset efficiency gaps.
+ **Implication:** Underutilized weekday capacity represents a portfolio-wide opportunity.
 
 ---
 
-### 5️⃣ Luxury Segment Drives Revenue
+### 3️⃣ Bangalore Requires Demand-Side Intervention
 
-Luxury properties contribute significantly higher realized revenue than business-category hotels, primarily due to stronger pricing rather than higher occupancy.
+- Relatively strong ADR
+- Lowest occupancy among major cities
 
----
-
-### 6️⃣ Service Quality Influences Demand
-
-Cities with stronger customer ratings tend to maintain healthier occupancy levels, indicating service quality impacts booking performance.
+ **Implication:** Demand stimulation (not pricing reduction) should be prioritized.
 
 ---
 
-## 🏢 Business Recommendations
+### 4️⃣ Delhi Has Pricing Upside Potential
 
-- Implement controlled ADR optimization in high-demand cities (e.g., Delhi)
-- Stimulate weekday demand through corporate partnerships and midweek offers
-- Maintain premium pricing strategy in Mumbai
-- Launch demand-generation initiatives in Bangalore
-- Improve service consistency in lower-rated properties
-- Enhance utilization strategies for high-capacity hotels
+- Highest occupancy levels
+- Moderate ADR compared to Mumbai
+
+ **Implication:** Controlled ADR testing may unlock incremental revenue without harming occupancy.
 
 ---
 
-## 🛠 Tools & Technologies Used
+### 5️⃣ Underutilized High-Capacity Properties Identified
 
-- Python  
-- Pandas  
-- NumPy  
-- Matplotlib  
-- Seaborn  
-- Jupyter Notebook  
+Several high-capacity properties operate below optimal occupancy levels, indicating asset efficiency gaps.
+
+ **Implication:** Targeted demand initiatives can significantly improve return on fixed assets.
+
+---
+
+### 6️⃣ Luxury Segment Drives Revenue Contribution
+
+Luxury properties generate higher realized revenue primarily due to higher ADR rather than occupancy dominance.
+
+---
+
+### 7️⃣ Service Quality Shows Moderate Demand Influence
+
+Cities with stronger customer ratings tend to maintain healthier occupancy levels, though pricing remains the primary revenue driver.
+
+---
+
+## 📈 Revenue Decomposition Framework
+
+Revenue was decomposed using:
+Revenue = ADR × Successful Bookings
+Occupancy (%) = Successful Bookings / Capacity
+
+City-level ADR was calculated using weighted totals:
+ADR = Total Revenue / Total Successful Bookings
+This ensured correct aggregation and avoided averaging distortions.
+
+---
+
+## Strategic Recommendations
+
+### 1. Optimize Pricing in High-Demand Markets (Delhi)
+Implement controlled ADR increases through:
+- Segmented pricing experiments
+- Premium upselling strategies
+- Event-driven rate optimization
+
+---
+
+### 2. Stimulate Demand in Bangalore
+Focus on:
+- Corporate weekday partnerships
+- Mid-week bundled offers
+- Localized marketing initiatives
+
+---
+
+### 3. Address Weekday Underutilization (Portfolio-Wide)
+Introduce:
+- Long-stay weekday discounts
+- Business travel incentives
+- Dynamic pricing strategies
+
+---
+
+### 4. Improve Utilization of High-Capacity Properties
+- Event & conference sales initiatives
+- Strategic partnerships
+- Property-level performance audits
+
+---
+
+### 5. Protect Premium Pricing in Mumbai
+Maintain pricing power while preserving occupancy stability.
+
+---
+
+## 🛠 Tools & Technologies
+
+- Python
+- Pandas
+- NumPy
+- Matplotlib
+- Seaborn
+- Jupyter Notebook
 
 ---
 
@@ -191,9 +180,20 @@ atliq-grands-hotel-analysis/
 
 ---
 
-## 📈 Project Outcome
 
-This analysis demonstrates how revenue performance can be systematically decomposed into pricing and demand components, enabling data-driven strategic decision-making across cities and property categories.
+---
 
-The findings provide actionable direction for pricing optimization, demand stimulation, and operational improvement initiatives.
+## 💼 Project Outcome
+
+This project demonstrates:
+
+- Structured business problem framing
+- Multi-table data integration
+- Correct metric derivation (ADR & Occupancy)
+- Revenue decomposition methodology
+- Asset utilization analysis
+- Executive-level insight communication
+
+The analysis provides actionable guidance for pricing optimization, demand stimulation, and operational efficiency improvement.
+
 
