@@ -135,6 +135,49 @@ Is revenue concentrated across specific booking channels?
 Revenue dependence on specific platforms highlights potential risk and opportunity for channel diversification.
 
 ---
+---
+
+## 9️⃣ Average Rating vs Average Occupancy
+
+**File:** `average_rating_vs_average_occupancy.png`
+
+**Business Question:**  
+Does better customer satisfaction translate into higher occupancy?
+
+**How to Interpret:**
+- X-axis → Average Customer Rating
+- Y-axis → Average Occupancy (%)
+- Each point represents a city.
+
+Look for a positive relationship between ratings and occupancy.
+
+**Key Insight:**  
+The relationship between ratings and occupancy is present but not strongly linear.  
+Cities with moderate ratings still maintain strong occupancy, suggesting pricing and demand factors may influence performance more than service ratings alone.
+
+**Business Implication:**  
+While service quality remains important for long-term brand equity, occupancy optimization may require pricing and demand-side strategies rather than relying solely on rating improvements.
+
+---
+
+## 🔟 June Occupancy by City
+
+**File:** `june_occupancy_by_city.png`
+
+**Business Question:**  
+How did occupancy perform during the most recent month?
+
+**How to Interpret:**
+- Compare city-wise occupancy levels for June.
+- Identify short-term demand leaders and laggards.
+
+**Key Insight:**  
+June occupancy levels align with overall city performance patterns, with Delhi leading and Bangalore trailing.
+
+**Business Implication:**  
+Short-term demand patterns are consistent with structural city-level performance trends, reinforcing the need for city-specific pricing and demand strategies.
+
+---
 
 #  How to Use This Folder
 
