@@ -14,6 +14,18 @@ This analysis evaluates hotel performance across cities, room categories, and ti
 
 ---
 
+## 🎥 Executive Presentation
+
+The final business presentation and walkthrough are available below:
+
+| Resource | Link |
+|-----------|------|
+| 📂 Slide Deck (PDF) | [Open Presentation Folder](presentation/) |
+| 🎬 Video Walkthrough | https://youtu.be/W60ZW_lJUTc |
+
+---
+
+
 ## Business Objectives
 
 - Diagnose city-level revenue performance
