@@ -1,4 +1,4 @@
-# 🎥 Executive Presentation – AtliQ Grands Hospitality Analysis
+# Executive Presentation – AtliQ Grands Hospitality Analysis
 
 This folder contains the final executive-level presentation created as part of the Hospitality Revenue Analysis project.
 
